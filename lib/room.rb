@@ -28,7 +28,7 @@ class Room
         INSERT INTO rooms (title, date_created, price, url) VALUES (?, ?, ?, ?)
         SQL
 
-        DB[:conn].execute(sql, self.title, self.date_created, self.price, self.url)
+        DB[:connection].execute(sql, self.title, self.date_created, self.price, self.url)
         #puts "You are about to save #{self}"
     end
 
@@ -38,11 +38,11 @@ class Room
             id INTEGER PRIMARY KEY,
             title TEXT,
             date_created DATETIME,
-            price TEXT,
+            price INTEGER,
             url TEXT
         )
         SQL
 
-        DB[:conn].execute(sql)
+        DB[:connection].execute(sql)
     end
 end
