@@ -19,7 +19,7 @@ class Room
     end
 
     def save
-        insert
+        persisted? ? update : insert
     end
 
     def insert
@@ -30,6 +30,10 @@ class Room
 
         DB[:connection].execute(sql, self.title, self.date_created, self.price, self.url)
         #puts "You are about to save #{self}"
+    end
+
+    def persisted?
+        !!self.id
     end
 
     def self.create_table
