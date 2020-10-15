@@ -19,6 +19,30 @@ class Room
     end
 
     def save
+        insert
+    end
 
+    def insert
+        # I need a database! I think it's my environments job to get my database loaded
+        sql = <<-SQL
+        INSERT INTO rooms (title, date_created, price, url) VALUES (?, ?, ?, ?)
+        SQL
+
+        DB[:conn].execute(sql, self.title, self.date_created, self.price, self.url)
+        #puts "You are about to save #{self}"
+    end
+
+    def self.create_table
+        sql = <<-SQL
+        CREATE TABLE IF NOT EXISTS rooms (
+            id INTEGER PRIMARY KEY,
+            title TEXT,
+            date_created DATETIME,
+            price TEXT,
+            url TEXT
+        )
+        SQL
+
+        DB[:conn].execute(sql)
     end
 end
