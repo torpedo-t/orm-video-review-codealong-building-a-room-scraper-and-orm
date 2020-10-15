@@ -11,9 +11,8 @@ end
 
 task :scrape_rooms do
     # instantiate a scraper, and then have it find new rooms
-    chicago_scraper = RoomScraper.new('https://chicago.craigslist.org/search/hhh?query=roommates&sort=rel')
-    # nyc_scraper.call
-    # chicago_scraper = RoomScraper.new('https://chicago.craigslist.org/search/roo')
-    # chicago_scraper.call 
+    chicago_scraper = RoomScraper.new('https://chicago.craigslist.org/search/roo')
+    chicago_scraper.call 
     # after this method call, I should be able to say Room.all and have rooms there
+    # but we'd have to build a self.all method in our Room class first
 end
